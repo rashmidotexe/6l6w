@@ -6,24 +6,32 @@ def display_board(board)
   puts "---+---+---"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
-board = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 player1=[]
 player2=[]
 display_board(board)
 i=0
-while i<=8 do
+while true do
   if (i%2==0)
       puts "player1 choose an index"
       entry=gets.chomp().to_i
-      player1.append(entry)
-      board[entry]="O"
-      i+=1
+      if (board[entry]==entry)
+        player1.append(entry)
+        board[entry]="O"
+        i+=1
+      else
+        puts "invalid move"
+      end
     else
       puts "player2 choose an index"
       entry=gets.chomp().to_i
-      player2.append(entry)
-      board[entry]="X"
-      i+=1
+      if (board[entry]==entry)
+        player2.append(entry)
+        board[entry]="X"
+        i+=1
+      else
+        puts "invalid move"
+      end
   end
   display_board(board)
   for x in win
